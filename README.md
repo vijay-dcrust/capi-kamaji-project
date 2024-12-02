@@ -3,12 +3,12 @@
 This project aims to set up a test OpenStack environment using DevStack, configure a Cluster API (CAPI) management cluster, and create a workload Kubernetes cluster using OpenStack as the infrastructure provider and Kamaji as the control plane provider. Additionally, automation of the CAPI management cluster creation is included as a bonus.
 ## Prerequisites
 - Fresh installation of a supported Linux distribution (Ubuntu)
-- management kuberenetes cluster to run centralised tools and workload control planes(kind or docker-desktop or any production grade cluster)
+- Management kuberenetes cluster to run centralised tools and workload control planes(kind or docker-desktop or any production grade cluster)
 - Basic knowledge of Kubernetes and OpenStack
 - Git installed on your machine
 - Access to a machine with sufficient resources to run OpenStack and Kubernetes clusters
 - OpenStack CLI tools installed
-- kubectl CLI tool installed
+- kubectl CLI tool installed 
 ## Steps
 ### 1. Set Up a Test OpenStack Environment Using DevStack
 ### 2. Set Up an argocd cluster to automate the CAPI and kamaji installation
