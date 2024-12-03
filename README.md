@@ -1,17 +1,17 @@
 # Mini Project: OpenStack Environment with CAPI and Kamaji
 ## Overview
-This project aims to set up a test OpenStack environment using DevStack, configure a Cluster API (CAPI) management cluster, and create a workload Kubernetes cluster using OpenStack as the infrastructure provider and Kamaji as the control plane provider. Additionally, automation of the CAPI management cluster creation is included as a bonus.
+This project aims to set up a test OpenStack environment using DevStack, configure a Cluster API (CAPI) management cluster, and create a workload Kubernetes cluster using OpenStack as the infrastructure provider and Kamaji as the control plane provider. Additionally, automation of the CAPI management cluster creation is done using argocd.
 ## Prerequisites
 - Fresh installation of a supported Linux distribution (Ubuntu)
 - Management kuberenetes cluster to run centralised tools and workload control planes(kind or docker-desktop or any production grade cluster)
-- Basic knowledge of Kubernetes and OpenStack
+- A basic installation of argocd cluster
 - Git installed on your machine
 - Access to a machine with sufficient resources to run OpenStack and Kubernetes clusters
 - OpenStack CLI tools installed
 - kubectl CLI tool installed 
 ## Steps
 ### 1. Set Up a Test OpenStack Environment Using DevStack
-### 2. Set Up an argocd cluster to automate the CAPI and kamaji installation
+### 2. Clone the repository.
 ### 3. Install CAPI Management Cluster using argocd
 1. Create an application using argocd to install capi management cluster.
    argocd application automatically installs the capi using the manifest from the folder manifest/capi/
