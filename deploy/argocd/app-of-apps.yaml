@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: capi-app-of-apps
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: <server_url>
+  project: dakota-project-01
+  source:
+    path: manifest/
+    repoURL: https://github.com/vijay-dcrust/capi-kamaji-project/
+    targetRevision: MAIN
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: true
+
