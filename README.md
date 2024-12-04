@@ -15,7 +15,7 @@ This project aims to set up a test OpenStack environment using DevStack, configu
 ```export K8S_MGMT_ENDPOINT=<your_mgmt_cluster_endpoint_here
    git clone 'https://github.com/vijay-dcrust/capi-kamaji-project/'
    cd capi-kamaji-project
-   sed 's/server_url/$K8S_MGMT_ENDPOINT/g' deploy/argocd/app-of-apps.yaml
+   sed -i 's/server_url/$K8S_MGMT_ENDPOINT/g' deploy/argocd/app-of-apps.yaml
    kubectl apply -f deploy/argocd/app-of-apps.yaml
  ```
  Applying the above manifest would take care of your entire installation and below steps as well.
