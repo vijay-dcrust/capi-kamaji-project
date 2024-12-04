@@ -11,7 +11,13 @@ This project aims to set up a test OpenStack environment using DevStack, configu
 - kubectl CLI tool installed 
 ## Steps
 ### 1. Set Up a Test OpenStack Environment Using DevStack
-### 2. Clone the repository.
+### 2. Apply the seed argocd manifest. We are using app of apps deployment model from argocd. Update the server_url of your management kubernetes cluster
+```export K8S_MGMT_ENDPOINT=<your_mgmt_cluster_endpoint_here
+   git clone 'https://github.com/vijay-dcrust/capi-kamaji-project/'
+   cd capi-kamaji-project
+   sed 's/server_url/$K8S_MGMT_ENDPOINT/g' deploy/argocd/app-of-apps.yaml
+   kubectl apply -f deploy/argocd/app-of-apps.yaml ```
+ Applying the above manifest would take care of your entire installation and below steps as well.
 ### 3. Install CAPI Management Cluster using argocd
 1. Create an application using argocd to install capi management cluster.
    argocd application automatically installs the capi using the manifest from the folder manifest/capi/
