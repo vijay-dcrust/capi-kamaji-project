@@ -24,24 +24,24 @@ This project aims to set up a test OpenStack environment using DevStack, configu
    argocd application automatically installs the capi using the manifest from the folder manifest/capi/
    
    You can manually install using kubectl
-bash
+```
     kubectl apply -f manifest/capi/
-    
+```    
 ### 4. Install kamaji using argocd  
 1. Create an application using argocd to install kamaji on management cluster.
    argocd application automatically installs the capi using the manifest from the helm repository.
    
-   You can manually install using helm
-bash
+   You can manually install using helm as well.
+```
     helm install kamaji clastix/kamaji -n kamaji-system --create-namespace
-
+```
 ### 5. Create a Workload Cluster Using OpenStack and Kamaji through argocd
 1. Create an application using argocd to install kamaji on management cluster.
    argocd application automatically creates a workload cluster tenant-00 using the manifest from the folder manifest/workload. You can add more manifest to this folder to create more clusters.
    
    You can manually install using kubectl
-bash
+```
     kubectl apply -f manifest/workload/
-
+```
 ## Contributing
 Feel free to open issues or submit pull requests for improvements and additional features.
