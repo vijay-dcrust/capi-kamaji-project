@@ -11,7 +11,9 @@ This project aims to set up a test OpenStack environment using DevStack, configu
 - kubectl CLI tool installed 
 ## Steps
 ### 1. Set Up a Test OpenStack Environment Using DevStack
-### 2. Apply the seed argocd manifest. We are using app of apps deployment model from argocd. Update the server_url of your management kubernetes cluster
+### 2. Apply the seed argocd manifest. 
+     We are using app of apps deployment model from argocd. 
+     Update the server_url of your management kubernetes cluster
 ```
    export server_url="https://kubernetes.default.svc" 
    export K8S_MGMT_ENDPOINT=<your_mgmt_cluster_endpoint_here
