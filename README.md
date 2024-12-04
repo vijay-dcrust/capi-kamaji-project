@@ -21,7 +21,7 @@ This project aims to set up a test OpenStack environment using DevStack, configu
    sed -i 's/$server_url/$K8S_MGMT_ENDPOINT/g' deploy/argocd/app-of-apps.yaml
    kubectl apply -f deploy/argocd/app-of-apps.yaml
  ```
- Applying the above manifest would take care of your entire installation and below steps as well.
+ Applying the above manifest would take care of your entire installation and below steps (3,4 and 5) as well.
 ### 3. Install CAPI Management Cluster using argocd
 1. Create an application using argocd to install capi management cluster.
    argocd application automatically installs the capi using the manifest from the folder manifest/capi/
