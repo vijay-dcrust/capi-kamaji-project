@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kamaji-helm
+  namespace: argocd
+spec:
+  project: capi-project-01
+  source:
+    chart: clastix/kamaji
+    repoURL: https://clastix.github.io/charts
+    targetRevision: 1.0.0
+    helm:
+      releaseName: kamaji
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kamaji-system

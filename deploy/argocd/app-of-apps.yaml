@@ -6,8 +6,8 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: <server_url>
-  project: dakota-project-01
+    server: https://kubernetes.default.svc
+  project: capi-project-01
   source:
     path: manifest/
     repoURL: https://github.com/vijay-dcrust/capi-kamaji-project/
