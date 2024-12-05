@@ -21,7 +21,7 @@ This project aims to set up a test OpenStack environment using DevStack, configu
    sed -i 's/$server_url/$K8S_MGMT_ENDPOINT/g' deploy/argocd/app-of-apps.yaml
    kubectl apply -f deploy/argocd/app-of-apps.yaml
  ```
- Applying the above manifest would take care of your entire installation and below steps (3,4 and 5) as well.
+####Applying the above manifest would take care of your entire installation and below steps (3,4 and 5) as well.
 ### 3. Install CAPI Management Cluster using argocd
 1. Create an application using argocd to install capi management cluster.
    argocd application automatically installs the capi using the manifest from the folder manifest/capi/
@@ -44,7 +44,28 @@ This project aims to set up a test OpenStack environment using DevStack, configu
    
    You can manually install using kubectl
 ```
-    kubectl apply -f manifest/workload/
+    kubectl apply -f manifest/workload/tcp-control-plane.yaml
+```
+### 6. Verify the workload cluster control plane access
+```
+$ k get svc -n tenant                                                                                                  [5/12/24 | 4:40:29]
+NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+tenant-00   ClusterIP   10.96.188.106   <none>        6443/TCP,8132/TCP   4d1h
+
+$ kubectl get secret tenant-00-admin-kubeconfig -n tenant -o json|jq -r '.data["admin.conf"]'|base64 --decode > tenant.kubeconfig
+
+```
+#### If you are not using a load balancer to expose your k8s control endpoint, you need to do port forwarding to access service. 
+#### In this case you need to update tenant.kubeconfig with local host rather than service IP. 
+
+<img width="586" alt="image" src="https://github.com/user-attachments/assets/209fb049-ba1e-46f5-bdc2-cf18dc4c60eb">
+
+```
+$ k get svc --kubeconfig=tenant.kubeconfig -A                                                                          [5/12/24 | 4:41:53]
+NAMESPACE     NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+default       kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP                  4d1h
+kube-system   kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   4d1h
+
 ```
 ## Contributing
 Feel free to open issues or submit pull requests for improvements and additional features.
